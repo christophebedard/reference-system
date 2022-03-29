@@ -23,6 +23,43 @@ ament_auto_add_executable(autoware_default_singlethreaded
   src/ros2/executor/autoware_default_singlethreaded.cpp
 )
 
+# Single Threaded Executor (1[a-d])
+ament_auto_add_executable(autoware_default_singlethreaded_1a
+  src/ros2/executor/autoware_default_singlethreaded_1a.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_1b
+  src/ros2/executor/autoware_default_singlethreaded_1b.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_1c
+  src/ros2/executor/autoware_default_singlethreaded_1c.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_1d
+  src/ros2/executor/autoware_default_singlethreaded_1d.cpp
+)
+
+# Single Threaded Executor (2[a-g])
+ament_auto_add_executable(autoware_default_singlethreaded_2a
+  src/ros2/executor/autoware_default_singlethreaded_2a.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_2b
+  src/ros2/executor/autoware_default_singlethreaded_2b.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_2c
+  src/ros2/executor/autoware_default_singlethreaded_2c.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_2d
+  src/ros2/executor/autoware_default_singlethreaded_2d.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_2e
+  src/ros2/executor/autoware_default_singlethreaded_2e.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_2f
+  src/ros2/executor/autoware_default_singlethreaded_2f.cpp
+)
+ament_auto_add_executable(autoware_default_singlethreaded_2g
+  src/ros2/executor/autoware_default_singlethreaded_2g.cpp
+)
+
 # Static Single Threaded Executor
 ament_auto_add_executable(autoware_default_staticsinglethreaded
   src/ros2/executor/autoware_default_staticsinglethreaded.cpp

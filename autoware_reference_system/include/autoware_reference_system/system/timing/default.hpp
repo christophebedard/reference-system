@@ -20,6 +20,9 @@ namespace nodes
 namespace timing
 {
 
+// On an i7-6700K 4.0 GHz CPU, this results in ~25 ms
+static constexpr uint64_t NUMBER_CRUNCHER_LIMIT_COMMON_VALUE = 8192;
+
 struct Default
 {
   using time_t = std::chrono::nanoseconds;
@@ -39,27 +42,27 @@ struct Default
   // to figure out what values to place here corresponding to the run_time
   // you would like to run each node for
   // processing
-  static constexpr uint64_t POINTS_TRANSFORMER_FRONT = 65536;
-  static constexpr uint64_t POINTS_TRANSFORMER_REAR = 65536;
-  static constexpr uint64_t VOXEL_GRID_DOWNSAMPLER = 65536;
-  static constexpr uint64_t POINT_CLOUD_MAP_LOADER = 65536;
-  static constexpr uint64_t RAY_GROUND_FILTER = 65536;
-  static constexpr uint64_t EUCLIDEAN_CLUSTER_DETECTOR = 65536;
-  static constexpr uint64_t EUCLIDEAN_INTERSECTION = 65536;
-  static constexpr uint64_t OBJECT_COLLISION_ESTIMATOR = 65536;
-  static constexpr uint64_t MPC_CONTROLLER = 65536;
-  static constexpr uint64_t PARKING_PLANNER = 65536;
-  static constexpr uint64_t LANE_PLANNER = 65536;
+  static constexpr uint64_t POINTS_TRANSFORMER_FRONT = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t POINTS_TRANSFORMER_REAR = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t VOXEL_GRID_DOWNSAMPLER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t POINT_CLOUD_MAP_LOADER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t RAY_GROUND_FILTER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t EUCLIDEAN_CLUSTER_DETECTOR = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t EUCLIDEAN_INTERSECTION = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t OBJECT_COLLISION_ESTIMATOR = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t MPC_CONTROLLER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t PARKING_PLANNER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t LANE_PLANNER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
 
   // fusion
-  static constexpr uint64_t POINT_CLOUD_FUSION = 65536;
-  static constexpr uint64_t NDT_LOCALIZER = 65536;
-  static constexpr uint64_t VEHICLE_INTERFACE = 65536;
-  static constexpr uint64_t LANELET_2_GLOBAL_PLANNER = 65536;
-  static constexpr uint64_t LANELET_2_MAP_LOADER = 65536;
+  static constexpr uint64_t POINT_CLOUD_FUSION = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t NDT_LOCALIZER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t VEHICLE_INTERFACE = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t LANELET_2_GLOBAL_PLANNER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
+  static constexpr uint64_t LANELET_2_MAP_LOADER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
 
   // cyclic
-  static constexpr uint64_t BEHAVIOR_PLANNER = 65536;
+  static constexpr uint64_t BEHAVIOR_PLANNER = NUMBER_CRUNCHER_LIMIT_COMMON_VALUE;
   static constexpr time_t BEHAVIOR_PLANNER_CYCLE = milliseconds(100);
 };
 
