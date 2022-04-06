@@ -16,12 +16,15 @@
 #include <chrono>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "rclcpp/rclcpp.hpp"
 #include "reference_system/nodes/settings.hpp"
 #include "reference_system/number_cruncher.hpp"
 #include "reference_system/sample_management.hpp"
 #include "reference_system/msg_types.hpp"
+
+#include "tracetools/tracetools.h"
 
 namespace nodes
 {
@@ -43,6 +46,15 @@ public:
       settings.input_1, 1,
       [this](const message_t::SharedPtr msg) {input_callback(1U, msg);});
     publisher_ = this->create_publisher<message_t>(settings.output_topic, 1);
+
+    // Annotate message links
+    std::vector<const void *> link_subs = {
+      static_cast<const void *>(subscriptions_[0].subscription->get_subscription_handle().get()),
+      static_cast<const void *>(subscriptions_[1].subscription->get_subscription_handle().get())};
+    std::vector<const void *> link_pubs = {
+      static_cast<const void *>(publisher_->get_publisher_handle().get())};
+    TRACEPOINT(
+      message_link_partial_sync, link_subs.data(), link_subs.size(), link_pubs.data(), link_pubs.size());
   }
 
 private:

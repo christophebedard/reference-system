@@ -24,6 +24,8 @@
 #include "reference_system/sample_management.hpp"
 #include "reference_system/msg_types.hpp"
 
+#include "tracetools/tracetools.h"
+
 namespace nodes
 {
 namespace rclcpp_system
@@ -51,6 +53,20 @@ public:
     timer_ = this->create_wall_timer(
       settings.cycle_time,
       [this] {timer_callback();});
+
+    // Annotate message links
+    std::vector<const void *> link_subs;
+    std::transform(
+      subscriptions_.cbegin(),
+      subscriptions_.cend(),
+      std::back_inserter(link_subs),
+      [](const auto & s) {
+        return static_cast<const void *>(s.subscription->get_subscription_handle().get());
+      });
+    std::vector<const void *> link_pubs = {
+      static_cast<const void *>(publisher_->get_publisher_handle().get())};
+    TRACEPOINT(
+      message_link_periodic_async, link_subs.data(), link_subs.size(), link_pubs.data(), link_pubs.size());
   }
 
 private:
